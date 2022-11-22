@@ -1,0 +1,159 @@
+package prueba;
+
+import java.util.Date;
+import java.util.Scanner;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Arrays;
+
+public class pruebita {
+	
+
+	public static void main(String[] s) {
+	    Scanner lost=new Scanner(System.in);
+	    int opcion, i, vidas=15, seleccion;
+	    var fechaHora = new Date();
+	    var hora = fechaHora.getHours();
+	    var minuto = fechaHora.getMinutes();
+	    var segundo = fechaHora.getSeconds();
+	    String palabra, frase;
+	    
+	    System.out.println("escriba la palabra a encontrar");
+        palabra=lost.nextLine();
+
+
+        char [] letras = palabra.toCharArray();
+        char [] guionesB = new char [letras.length];
+
+        for(i=0;i<letras.length;i++) 
+         guionesB[i]='_';
+
+
+
+      boolean victoria = false;{
+    	  
+    	  while(victoria==false&&vidas>0) {
+    		  System.out.println(guionesB);
+    		  System.out.println("presione 1 para introducir una letra o presione 2 para escribir la frase completa");
+    		  seleccion=lost.nextLine();
+    		  if(seleccion=1)
+    			  System.out.println(guionesB);
+                  System.out.println("te quedan "+vidas+" intentos (acertar también te quitara intentos)");
+                  char LIntroducida =lost.next().charAt(0);
+                  for(int i2=0; i2<letras.length;i2++) {
+                     if(letras[i2]==LIntroducida) 
+                         guionesB[i2]=LIntroducida;
+                  
+                  if(Arrays.equals(letras,guionesB)) {
+                	  vidas=1;
+    			
+                  }
+              }vidas+=-1;
+              else if(seleccion=2)
+            	  System.out.println(guionesB);
+                  System.out.println("te quedan "+vidas+" intentos (acertar también te quitara intentos)");
+                  frase=lost.nextLine();
+                  char [] palEncontrar = frase.toCharArray();
+                  for(int i2=0; i2<letras.length;i2++) {
+                  if(frase==letras) 
+                      frase=letras;
+               
+               if(Arrays.equals(letras,guionesB)) {
+             	  vidas=1;
+ 			
+               }
+           }vidas+=-1;
+              
+              }
+      }
+      
+      if(Arrays.equals(letras,guionesB)) 
+          System.out.println("ganaste la palabra era:"+palabra);
+      else
+    	  System.out.print("te quedaste sin intentos");
+    	  
+      
+      
+	    do{
+	     System.out.println("¿que desea hacer?");
+	     System.out.println("1 - ver la hora");
+	     System.out.println("2 - ver el pronostico del clima");
+	     System.out.println("3 - jugar al ahorcado");
+	     System.out.println("4 - apagar al pc");
+	     System.out.println("0 - salir");
+	     opcion=lost.nextInt();
+		switch(opcion) {
+	     case 1:
+	    	System.out.println("esta es la hora actual: "+hora+":"+minuto+":"+segundo);
+	    
+	    	 break;
+	    	
+	    	 
+	     case 2:
+	    	 
+	    	 try {
+
+	             Desktop.getDesktop().browse(new URI("https://www.inumet.gub.uy"));
+
+	         } catch (URISyntaxException ex) {
+
+	             System.out.println(ex);
+
+	         }catch(IOException e){
+
+	             System.out.println(e);
+
+	         }
+	       
+	                       
+		
+	    	
+	         break;
+	    		
+
+	     case 3:
+	         
+	    	 pruebita.main (null);
+	      break;
+	  
+	     case 4:
+	    	 String shutdownCommand;
+		 	    String operatingSystem = System.getProperty("os.name");
+
+		 	    if ("Linux".equals(operatingSystem) || "Mac OS X".equals(operatingSystem)) {
+		 	        shutdownCommand = "shutdown -h now";
+		 	    }
+		 	    else if (operatingSystem.contains("Windows")) {
+		 	        shutdownCommand = "shutdown.exe -s -t 0";
+		 	    }
+		 	    else {
+		 	        throw new RuntimeException("no se puede apagar el sistema");
+		 	    }
+
+		 	    try {
+					Runtime.getRuntime().exec(shutdownCommand);
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
+		 	    System.exit(0);
+		 	   
+		    	 break;
+		    	 
+	     
+	     case 0:
+	    	 System.exit(0);
+
+	     default:
+	         System.out.println("opcion incorrecta");
+	        break;
+	     }
+
+	     }while(opcion!=0); 
+	     lost.close();
+
+
+	     }
+	     }
