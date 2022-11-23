@@ -60,7 +60,7 @@ public class pruebita {
     		  }
                   else if(seleccion==2) {
             	  System.out.println(guionesB);
-                  System.out.println("te quedan "+vidas+" intentos (acertar también te quitara intentos)");
+                  System.out.println("te quedan "+vidas+" intentos");
                   frase=lost.next();
                   char [] palEncontrar =frase.toCharArray();
                 	  for (int i3 = 0; i3 < frase.length(); i3++) {
