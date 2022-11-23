@@ -18,12 +18,11 @@ public class pruebita {
 	    var hora = fechaHora.getHours();
 	    var minuto = fechaHora.getMinutes();
 	    var segundo = fechaHora.getSeconds();
-	    
+	    String palabra;
 	    
 		
 	    
 	    System.out.println("escriba la palabra a encontrar");
-	    String palabra=lost.next();
         palabra=lost.nextLine();
 
 
@@ -55,9 +54,9 @@ public class pruebita {
                 	  victoria=true;
                 	  vidas=1;
     			
-                  vidas+=-1;
+                  
                   }
-                  }
+                  }vidas+=-1;
     		  }
                   else if(seleccion==2) {
             	  System.out.println(guionesB);
