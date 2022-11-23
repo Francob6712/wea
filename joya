@@ -18,11 +18,12 @@ public class pruebita {
 	    var hora = fechaHora.getHours();
 	    var minuto = fechaHora.getMinutes();
 	    var segundo = fechaHora.getSeconds();
-	    String palabra, frase;
+	    
 	    
 		
 	    
 	    System.out.println("escriba la palabra a encontrar");
+	    String palabra=lost.next();
         palabra=lost.nextLine();
 
 
@@ -60,12 +61,13 @@ public class pruebita {
     		  }
                   else if(seleccion==2) {
             	  System.out.println(guionesB);
-                  System.out.println("te quedan "+vidas+" intentos");
-                  frase=lost.next();
+                  System.out.println("te quedan "+vidas+" intentos (acertar también te quitara intentos)");
+                  String frase=lost.next();
+                  frase=lost.nextLine();
                   char [] palEncontrar =frase.toCharArray();
                 	  for (int i3 = 0; i3 < frase.length(); i3++) {
-                		  if(letras[i3]==palEncontrar[i3])
-                			  victoria=true;
+                		  if(letras[i3]!=palEncontrar[i3])
+                			  victoria=false;
                 		  
                 	if(Arrays.equals(letras, palEncontrar)) {
                 		vidas=1;
@@ -180,11 +182,3 @@ public class pruebita {
 
       }
       }
-	
-
-	
-
-
-
-
-	     
